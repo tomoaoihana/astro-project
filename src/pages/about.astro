@@ -1,0 +1,35 @@
+---
+// レイアウト
+import Layout from "../layouts/Layout.astro";
+
+// サーバー側の処理をかく
+//HTMLに生成する前に実行されるものを書く
+const pageTitle = "About";
+---
+
+<Layout title={pageTitle} description="このページはAboutページです">
+  <main>
+    <h1>{pageTitle}</h1>
+    <p>Aboutです</p>
+  </main>
+</Layout>
+
+<!-- <style is:global>  全ページに適用される -->
+<!-- h1 {
+    font-size: 6rem;
+  }
+</style> -->
+
+<style>
+  /* スコープ */
+  h1 {
+    color: red;
+  }
+  p {
+    color: blue;
+  }
+</style>
+
+<script>
+  console.log("Hello Astro!");
+</script>

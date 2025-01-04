@@ -11,5 +11,8 @@
   "dependencies": {
     "astro": "^5.0.4",
     "sass": "^1.83.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20"
   }
 }

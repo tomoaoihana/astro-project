@@ -1,0 +1,33 @@
+---
+export interface Props {
+  href?: string;
+  text?: string;
+  accent?: string;
+}
+
+const { href = "/", accent = false, ...props } = Astro.props;
+---
+
+<a href={href} class:list={["buttonPrimary", { "-accent": accent }]} {...props}>
+  <slot />
+</a>
+
+<style>
+  .buttonPrimary {
+    display: inline-block;
+    background-color: #5555;
+    color: #fff;
+    padding: 1em 2em;
+    border-radius: 100px;
+    text-decoration: none;
+  }
+
+  .buttonPrimary.-accent {
+    display: inline-block;
+    background-color: blueviolet;
+    color: #fff;
+    padding: 1em 2em;
+    border-radius: 100px;
+    text-decoration: none;
+  }
+</style>

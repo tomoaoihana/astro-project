@@ -2,6 +2,18 @@
 // レイアウト
 import Layout from "../layouts/Layout.astro";
 
+//Component
+import ButtonPrimary from "../components/ButtonPrimary.astro";
+import Card from "../components/Card.astro";
+
+//image
+
+import photo from "../assets/img/no-img.jpg";
+
+//WP
+const res = await fetch("https://shibajuku.net/wp-json/wp/v2/posts");
+const posts = await res.json();
+
 // サーバー側の処理をかく
 //HTMLに生成する前に実行されるものを書く
 const pageTitle = "otan";
@@ -10,30 +22,49 @@ const pageTitle = "otan";
 <Layout title={pageTitle} description="otanのサイト">
   <main>
     <h1>{pageTitle}</h1>
-    <p>テスト</p>
-    <p>テスト</p>
-    <p>テスト</p>
-    <p>テスト</p>
-    <p>テスト</p>
-  </main>
-</Layout>
+    <figure>
+      <img src={photo.src} alt="写真" />
+    </figure>
+    {
+      posts.map((post: any) => (
+        <Card
+          title={post.title.rendered}
+          href={post.link}
+          text={post.excerpt.rendered}
+        />
+      ))
+    }
 
-<!-- <style is:global>  全ページに適用される -->
-<!-- h1 {
+    <p>
+      <ButtonPrimary href="/about/" data-test="wa"> aboutへ </ButtonPrimary>
+    </p>
+    <p>
+      <ButtonPrimary href="/blog/"> ぶろぐへ </ButtonPrimary>
+    </p>
+    <p>
+      <ButtonPrimary accent="true"> topへ </ButtonPrimary>
+    </p>
+  </main>
+
+  <!-- <style is:global>  全ページに適用される -->
+  <!-- h1 {
     font-size: 6rem;
   }
 </style> -->
 
-<style>
-  /* スコープ */
-  h1 {
-    color: red;
-  }
-  p {
-    color: blue;
-  }
-</style>
+  <style lang="scss">
+    // @use "../assets/scss/mixin" as *;  //外部ファイルからmixinを使う場合
+    $main-color: rgb(136, 197, 244);
+    /* スコープ */
+    h1 {
+      color: $main-color;
+    }
+    p {
+      color: blue;
+    }
+  </style>
 
-<script>
-  console.log("Hello Astro!");
-</script>
+  <script>
+    console.log("Hello Astro!");
+  </script>
+</Layout>

@@ -7,7 +7,7 @@ import ButtonPrimary from "../components/ButtonPrimary.astro";
 import Card from "../components/Card.astro";
 
 //image
-
+import { Image, Picture } from "astro:assets";
 import photo from "../assets/img/no-img.jpg";
 
 //WP
@@ -23,7 +23,14 @@ const pageTitle = "otan";
   <main>
     <h1>{pageTitle}</h1>
     <figure>
-      <img src={photo.src} alt="写真" />
+      <Picture
+        src={photo}
+        alt="写真"
+        loading="eager"
+        formats={["avif", "webp"]}
+        widths={[320, 640, 960, 1280]}
+        sizes={"(max-width: 1023px) 100vw, 1920px"}
+      />
     </figure>
     {
       posts.map((post: any) => (

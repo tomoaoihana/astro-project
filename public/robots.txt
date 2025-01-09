@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shibajuku.net/sitemap-index.xml

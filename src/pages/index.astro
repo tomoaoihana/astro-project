@@ -21,17 +21,19 @@ const pageTitle = "otan";
 
 <Layout title={pageTitle} description="otanのサイト">
   <main>
-    <h1>{pageTitle}</h1>
-    <figure>
-      <Picture
-        src={photo}
-        alt="写真"
-        loading="eager"
-        formats={["avif", "webp"]}
-        widths={[320, 640, 960, 1280]}
-        sizes={"(max-width: 1023px) 100vw, 1920px"}
-      />
-    </figure>
+    <div class="hero">
+      <h1 class="hero__title">{pageTitle}</h1>
+      <figure class="hero__figure">
+        <Picture
+          src={photo}
+          alt="写真"
+          loading="eager"
+          formats={["avif", "webp"]}
+          widths={[320, 640, 960, 1280]}
+          sizes={"(max-width: 1023px) 100vw, 1920px"}
+        />
+      </figure>
+    </div>
     {
       posts.map((post: any) => (
         <Card
@@ -68,6 +70,25 @@ const pageTitle = "otan";
     }
     p {
       color: blue;
+    }
+
+    .hero {
+      position: relative;
+    }
+
+    .hero__title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10rem;
+    }
+
+    .hero__figure {
     }
   </style>
 

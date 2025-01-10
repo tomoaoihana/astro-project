@@ -7,4 +7,11 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://shibajuku.net/",
   integrations: [sitemap()],
+
+  //viteの設定
+  vite: {
+    // build: {
+    //   cssTarget: "safari14",
+    // },
+  },
 });
